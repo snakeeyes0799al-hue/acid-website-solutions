@@ -1,0 +1,852 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ACID — Creative Digital Studio</title>
+<meta name="description" content="ACID Website Solutions builds bold, modern websites for ambitious businesses.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --lime:#d5ff32;
+  --pink:#ff4fc8;
+  --purple:#9c68ff;
+  --blue:#42d9ff;
+  --ink:#211d36;
+  --muted:#77728c;
+  --white:#fff;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  font-family:"DM Sans",sans-serif;
+  color:var(--ink);
+  background:#f8f6ff;
+  overflow-x:hidden;
+}
+a { color:inherit; text-decoration:none; }
+button,input,textarea,select { font:inherit; }
+
+.background {
+  position:fixed;
+  inset:0;
+  z-index:-2;
+  background:
+    radial-gradient(ellipse at 10% 10%,#e8ffad 0,transparent 35%),
+    radial-gradient(ellipse at 90% 15%,#ffc9ec 0,transparent 35%),
+    radial-gradient(ellipse at 70% 75%,#d9c9ff 0,transparent 38%),
+    radial-gradient(ellipse at 10% 90%,#bdf1ff 0,transparent 35%),
+    #f8f6ff;
+}
+.blob {
+  position:fixed;
+  width:320px;
+  height:320px;
+  border-radius:50%;
+  filter:blur(75px);
+  opacity:.4;
+  z-index:-1;
+  pointer-events:none;
+  animation:float 12s ease-in-out infinite alternate;
+}
+.blob.one { background:#d5ff32; top:15%; left:-150px; }
+.blob.two { background:#ff4fc8; top:50%; right:-150px; animation-delay:-4s; }
+.blob.three { background:#42d9ff; bottom:-160px; left:35%; animation-delay:-7s; }
+
+@keyframes float {
+  from { transform:translate(0,0) scale(1); }
+  to { transform:translate(70px,-50px) scale(1.25); }
+}
+
+.container { width:min(1160px,90%); margin:auto; }
+
+header {
+  position:sticky;
+  top:12px;
+  z-index:100;
+  width:min(1160px,94%);
+  margin:12px auto 0;
+  padding:13px 22px;
+  background:#ffffffdc;
+  backdrop-filter:blur(20px);
+  border:1px solid #ffffff;
+  border-radius:20px;
+  box-shadow:0 10px 40px #4d3d7410;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.logo {
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font:800 22px "Space Grotesk",sans-serif;
+}
+.logo-symbol {
+  width:43px;
+  height:43px;
+  display:grid;
+  place-items:center;
+  background:var(--lime);
+  border-radius:14px;
+  font-size:27px;
+  transform:rotate(-8deg);
+}
+.logo small {
+  display:block;
+  font:700 8px "DM Sans",sans-serif;
+  letter-spacing:2px;
+  color:var(--muted);
+  margin-top:4px;
+}
+.logo span:last-child { display:block; }
+.logo em { color:var(--purple); font-style:normal; }
+
+nav { display:flex; align-items:center; gap:28px; }
+nav a { font-size:12px; font-weight:800; transition:.2s; }
+nav a:hover { color:var(--purple); }
+.nav-button {
+  background:var(--ink);
+  color:white;
+  padding:12px 18px;
+  border-radius:12px;
+}
+.menu {
+  display:none;
+  border:0;
+  background:var(--lime);
+  padding:9px 12px;
+  border-radius:10px;
+  font-size:20px;
+}
+
+.hero {
+  min-height:700px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  align-items:center;
+  gap:50px;
+  padding-top:70px;
+  padding-bottom:70px;
+}
+.eyebrow {
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  font-size:10px;
+  letter-spacing:2px;
+  font-weight:800;
+  color:#77718b;
+}
+.dot {
+  width:9px;
+  height:9px;
+  border-radius:50%;
+  background:#a6d500;
+  box-shadow:0 0 0 5px #d5ff3244;
+}
+.hero h1 {
+  font:700 clamp(48px,6.5vw,82px)/.99 "Space Grotesk",sans-serif;
+  letter-spacing:-5px;
+  margin:25px 0;
+}
+.gradient {
+  background:linear-gradient(100deg,#88bb00,#ff4fc8 48%,#8754f5 75%,#12bde9);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+.hero p {
+  max-width:480px;
+  color:var(--muted);
+  line-height:1.9;
+  font-size:15px;
+}
+.buttons { display:flex; gap:13px; margin-top:30px; flex-wrap:wrap; }
+.btn {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+  padding:15px 22px;
+  border-radius:13px;
+  border:0;
+  font-size:12px;
+  font-weight:800;
+  cursor:pointer;
+  transition:.25s;
+}
+.btn:hover { transform:translateY(-4px); box-shadow:0 12px 25px #49376b22; }
+.primary { background:var(--lime); color:var(--ink); }
+.secondary { background:white; border:1px solid #e8e2f2; }
+.hero-caption { margin-top:27px; font-size:11px; color:var(--muted); }
+
+.visual {
+  min-height:450px;
+  position:relative;
+  display:grid;
+  place-items:center;
+}
+.circle {
+  position:absolute;
+  width:390px;
+  height:390px;
+  border:1px dashed #9c68ff80;
+  border-radius:50%;
+  animation:spin 35s linear infinite;
+}
+.circle:after {
+  content:"";
+  position:absolute;
+  inset:35px;
+  border:1px dashed #ff4fc880;
+  border-radius:50%;
+}
+@keyframes spin { to { transform:rotate(360deg); } }
+
+.screen {
+  width:min(380px,90%);
+  background:white;
+  padding:7px;
+  border-radius:20px;
+  transform:rotate(-4deg);
+  box-shadow:0 30px 80px #46316e30;
+  position:relative;
+  z-index:2;
+}
+.screen-top {
+  height:32px;
+  background:#f1edf8;
+  border-radius:10px 10px 0 0;
+  display:flex;
+  align-items:center;
+  gap:5px;
+  padding:0 12px;
+}
+.screen-top i { width:8px; height:8px; border-radius:50%; background:#ff70c8; }
+.screen-top i:nth-child(2) { background:#d5ff32; }
+.screen-top i:nth-child(3) { background:#42d9ff; }
+.screen-body {
+  height:285px;
+  padding:32px 25px;
+  border-radius:0 0 12px 12px;
+  background:linear-gradient(135deg,#d5ff8c,#ffd2ec 55%,#c8b6ff);
+  overflow:hidden;
+  position:relative;
+}
+.screen-body small { font-size:8px; font-weight:800; letter-spacing:2px; }
+.screen-body h2 {
+  font:700 42px/1 "Space Grotesk";
+  margin-top:35px;
+  position:relative;
+  z-index:2;
+}
+.screen-body h2 span { color:#8051d8; }
+.screen-button { width:90px; height:25px; background:#28223d; border-radius:7px; margin-top:20px; }
+.screen-shape {
+  position:absolute;
+  width:180px;
+  height:180px;
+  background:#c8ff32;
+  border-radius:50%;
+  right:-40px;
+  bottom:-65px;
+}
+.screen-shape.two {
+  width:100px;
+  height:100px;
+  background:#ff4fc8;
+  right:30px;
+  bottom:5px;
+  opacity:.85;
+}
+.float-card {
+  position:absolute;
+  z-index:3;
+  background:white;
+  padding:15px 18px;
+  border-radius:14px;
+  box-shadow:0 12px 30px #49376b20;
+  font-size:11px;
+  font-weight:800;
+}
+.float-card small { display:block; color:var(--muted); font-weight:500; margin-top:4px; }
+.float-one { top:40px; left:0; }
+.float-two { right:-5px; bottom:45px; }
+.float-icon {
+  display:inline-grid;
+  place-items:center;
+  width:28px;
+  height:28px;
+  border-radius:9px;
+  margin-right:8px;
+}
+.float-one .float-icon { background:#eaffb3; }
+.float-two .float-icon { background:#ffdbf1; }
+
+.stats {
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+  padding:25px;
+  background:white;
+  border-radius:20px;
+  box-shadow:0 12px 35px #49376b10;
+}
+.stat { padding-left:15px; border-left:3px solid var(--lime); }
+.stat:nth-child(2) { border-color:var(--pink); }
+.stat:nth-child(3) { border-color:var(--purple); }
+.stat:nth-child(4) { border-color:var(--blue); }
+.stat strong { display:block; font:700 13px "Space Grotesk"; }
+.stat small { display:block; color:var(--muted); font-size:10px; margin-top:5px; }
+
+section.content { padding:110px 0; }
+.section-head { text-align:center; max-width:680px; margin:0 auto 48px; }
+.section-head h2 {
+  font:700 clamp(34px,4.5vw,51px)/1.1 "Space Grotesk";
+  letter-spacing:-2px;
+  margin:15px 0;
+}
+.section-head p { color:var(--muted); font-size:13px; line-height:1.8; }
+
+.services {
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:17px;
+}
+.service {
+  padding:25px;
+  border-radius:20px;
+  min-height:270px;
+  transition:.25s;
+}
+.service:hover { transform:translateY(-8px); }
+.service:nth-child(1) { background:#edffc2; }
+.service:nth-child(2) { background:#ffdef1; }
+.service:nth-child(3) { background:#e8ddff; }
+.service:nth-child(4) { background:#d9f6ff; }
+.service-icon {
+  width:48px;
+  height:48px;
+  background:#ffffffa8;
+  display:grid;
+  place-items:center;
+  border-radius:14px;
+  font-size:24px;
+}
+.service-number { float:right; font-size:10px; font-weight:800; }
+.service h3 { font:700 19px "Space Grotesk"; margin:30px 0 12px; }
+.service p { color:#6e687c; font-size:11px; line-height:1.8; }
+.service a { display:inline-block; margin-top:18px; font-size:11px; font-weight:800; }
+
+.portfolio-grid {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:22px;
+}
+.project {
+  background:white;
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:0 12px 35px #49376b12;
+  transition:.25s;
+}
+.project:hover { transform:translateY(-7px); }
+.project-visual {
+  height:235px;
+  display:grid;
+  place-items:center;
+  padding:22px;
+  position:relative;
+}
+.project:nth-child(1) .project-visual { background:linear-gradient(135deg,#d8ff91,#e4d7ff); }
+.project:nth-child(2) .project-visual { background:linear-gradient(135deg,#b9edff,#ffd5ec); }
+.project:nth-child(3) .project-visual { background:linear-gradient(135deg,#e9d5ff,#d9ffb8); }
+.preview {
+  width:100%;
+  height:170px;
+  background:white;
+  border:5px solid white;
+  border-radius:10px;
+  box-shadow:0 12px 30px #30234b25;
+  overflow:hidden;
+}
+.preview-bar { height:23px; background:#eeeaf5; padding:6px 10px; font-size:7px; font-weight:800; }
+.preview-main {
+  height:142px;
+  background:linear-gradient(110deg,#192c25,#57723d);
+  color:white;
+  padding:23px 16px;
+}
+.preview-main.blue { background:linear-gradient(110deg,#162a3a,#46718c); }
+.preview-main h3 { font:700 26px/1 "Space Grotesk"; }
+.preview-main small { display:block; margin-top:12px; font-size:7px; letter-spacing:1px; }
+.project-tag {
+  position:absolute;
+  bottom:12px;
+  right:14px;
+  background:white;
+  padding:7px 11px;
+  border-radius:30px;
+  font-size:8px;
+  font-weight:800;
+}
+.project-info { padding:20px; display:flex; justify-content:space-between; align-items:center; }
+.project-info h3 { font:700 15px "Space Grotesk"; }
+.project-info p { font-size:10px; color:var(--muted); margin-top:5px; }
+.project-link {
+  width:35px;
+  height:35px;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  background:#edffc2;
+}
+.portfolio-note { text-align:center; margin-top:20px; color:var(--muted); font-size:10px; line-height:1.7; }
+
+.process {
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
+}
+.step { padding:22px; background:#ffffffb8; border-radius:15px; border-top:4px solid var(--lime); }
+.step:nth-child(2) { border-color:var(--pink); }
+.step:nth-child(3) { border-color:var(--purple); }
+.step:nth-child(4) { border-color:var(--blue); }
+.step span { font:700 27px "Space Grotesk"; color:var(--purple); }
+.step h3 { margin:15px 0 9px; font:700 17px "Space Grotesk"; }
+.step p { font-size:11px; line-height:1.8; color:var(--muted); }
+
+.pricing-card {
+  width:min(470px,100%);
+  margin:auto;
+  padding:35px;
+  background:white;
+  border-radius:23px;
+  box-shadow:0 20px 55px #49376b18;
+}
+.pricing-label { font-size:11px; font-weight:800; letter-spacing:1px; }
+.price { font:700 45px "Space Grotesk"; letter-spacing:-2px; margin-top:25px; }
+.price small { font:500 13px "DM Sans"; color:var(--muted); letter-spacing:0; }
+.monthly { color:#8850e9; font-size:13px; font-weight:800; margin-top:5px; }
+.price-divider { height:1px; background:#eee8f5; margin:25px 0; }
+.pricing-card ul { list-style:none; display:grid; gap:14px; font-size:12px; color:#625c72; }
+.pricing-card li::first-letter { color:#86b900; }
+.pricing-card .btn { width:100%; margin-top:28px; }
+.fine-print { margin-top:15px; text-align:center; font-size:9px; line-height:1.7; color:var(--muted); }
+
+.reviews {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+.review { padding:25px; background:white; border-radius:19px; box-shadow:0 12px 30px #49376b10; }
+.stars { color:#edb500; letter-spacing:3px; }
+.review p { color:#6c667c; font-size:12px; line-height:1.8; margin:20px 0; }
+.review-person { display:flex; align-items:center; gap:10px; }
+.avatar { width:39px; height:39px; display:grid; place-items:center; border-radius:50%; background:#eaffb3; font-size:11px; font-weight:800; }
+.review:nth-child(2) .avatar { background:#ffdef1; }
+.review:nth-child(3) .avatar { background:#d9f6ff; }
+.review-person strong { display:block; font-size:11px; }
+.review-person small { display:block; font-size:9px; color:var(--muted); margin-top:4px; }
+
+.contact {
+  display:grid;
+  grid-template-columns:.9fr 1.1fr;
+  gap:65px;
+  align-items:center;
+}
+.contact-copy h2 { font:700 clamp(38px,5vw,58px)/1.05 "Space Grotesk"; letter-spacing:-2px; margin:20px 0; }
+.contact-copy p { color:var(--muted); line-height:1.9; font-size:14px; }
+.contact-card { background:white; border-radius:22px; padding:30px; box-shadow:0 20px 55px #49376b18; }
+.contact-card h3 { font:700 22px "Space Grotesk"; margin-bottom:22px; }
+form label { display:block; font-size:10px; font-weight:800; margin-bottom:15px; }
+form input,form select,form textarea {
+  display:block;
+  width:100%;
+  margin-top:7px;
+  padding:13px;
+  border:1px solid #e8e1f0;
+  border-radius:10px;
+  background:#fcfaff;
+  color:var(--ink);
+  outline:none;
+  font-size:11px;
+}
+form input:focus,form select:focus,form textarea:focus { border-color:var(--purple); box-shadow:0 0 0 3px #9257ff19; }
+form textarea { resize:vertical; }
+form button { width:100%; }
+.form-note { display:block; text-align:center; color:var(--muted); font-size:9px; margin-top:12px; line-height:1.6; }
+
+footer { padding:40px 5% 20px; text-align:center; background:#ffffffa8; border-top:1px solid #ffffff; }
+footer p { color:var(--muted); font-size:11px; margin:15px 0 25px; }
+.footer-bottom { border-top:1px solid #eae4f2; padding-top:18px; display:flex; justify-content:space-between; gap:10px; font-size:10px; color:var(--muted); }
+.footer-bottom a { color:var(--purple); font-weight:800; }
+
+@media(max-width:900px) {
+  .hero { grid-template-columns:1fr; padding-top:65px; }
+  .visual { min-height:410px; }
+  .services { grid-template-columns:repeat(2,1fr); }
+  .portfolio-grid { grid-template-columns:repeat(2,1fr); }
+  .project:last-child { grid-column:1/-1; }
+  .contact { gap:30px; }
+}
+@media(max-width:650px) {
+  header { padding:11px 14px; }
+  .menu { display:block; }
+  nav {
+    display:none;
+    position:absolute;
+    top:70px;
+    left:0;
+    right:0;
+    padding:20px;
+    background:white;
+    border-radius:16px;
+    box-shadow:0 15px 35px #49376b20;
+    flex-direction:column;
+    align-items:stretch;
+    gap:18px;
+  }
+  nav.open { display:flex; }
+  nav a { padding:5px; }
+  .hero h1 { letter-spacing:-2.5px; }
+  .visual { min-height:340px; transform:scale(.87); margin:-15px -20px; }
+  .circle { width:320px; height:320px; }
+  section.content { padding:80px 0; }
+  .stats { grid-template-columns:repeat(2,1fr); gap:22px; padding:20px 15px; }
+  .services,.portfolio-grid,.reviews,.process,.contact { grid-template-columns:1fr; }
+  .project:last-child { grid-column:auto; }
+  .contact-card { padding:22px 17px; }
+  .footer-bottom { justify-content:center; flex-wrap:wrap; }
+}
+</style>
+</head>
+
+<body>
+<div class="background"></div>
+<div class="blob one"></div>
+<div class="blob two"></div>
+<div class="blob three"></div>
+
+<header>
+  <a class="logo" href="#home">
+    <span class="logo-symbol">A</span>
+    <span>ACID<em>.</em><small>WEBSITE SOLUTIONS</small></span>
+  </a>
+  <button class="menu" id="menu">☰</button>
+  <nav id="nav">
+    <a href="#home">Home</a>
+    <a href="#services">Services</a>
+    <a href="#portfolio">Portfolio</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#contact" class="nav-button">Let's Talk ↗</a>
+  </nav>
+</header>
+
+<main>
+<section class="hero container" id="home">
+  <div>
+    <div class="eyebrow"><span class="dot"></span> CREATIVE DIGITAL STUDIO</div>
+    <h1>We build websites that <span class="gradient">make you stand out.</span></h1>
+    <p>We help ambitious businesses turn their ideas into beautiful, professional online experiences. Your next customer could be one click away.</p>
+    <div class="buttons">
+      <a href="#contact" class="btn primary">Start a project ↗</a>
+      <a href="#portfolio" class="btn secondary">Explore our work</a>
+    </div>
+    <div class="hero-caption">✦ Creative thinking. Modern design. Real business focus.</div>
+  </div>
+
+  <div class="visual">
+    <div class="circle"></div>
+    <div class="screen">
+      <div class="screen-top"><i></i><i></i><i></i></div>
+      <div class="screen-body">
+        <small>YOUR BUSINESS. ONLINE.</small>
+        <h2>MAKE YOUR<br><span>NEXT MOVE.</span></h2>
+        <div class="screen-button"></div>
+        <div class="screen-shape"></div>
+        <div class="screen-shape two"></div>
+      </div>
+    </div>
+    <div class="float-card float-one"><span class="float-icon">✳</span>Creative design<small>Made for your brand</small></div>
+    <div class="float-card float-two"><span class="float-icon">↗</span>Built to grow<small>Ready for customers</small></div>
+  </div>
+</section>
+
+<div class="stats container">
+  <div class="stat"><strong>CREATIVE</strong><small>Design approach</small></div>
+  <div class="stat"><strong>RESPONSIVE</strong><small>Every screen size</small></div>
+  <div class="stat"><strong>BUSINESS FIRST</strong><small>Built around your goals</small></div>
+  <div class="stat"><strong>KENYA 🇰🇪</strong><small>Serving local businesses</small></div>
+</div>
+
+<section class="content container" id="services">
+  <div class="section-head">
+    <div class="eyebrow">WHAT WE DO</div>
+    <h2>Digital solutions for <span class="gradient">ambitious brands.</span></h2>
+    <p>We create online experiences that help businesses look professional, communicate clearly and connect with customers.</p>
+  </div>
+  <div class="services">
+    <article class="service">
+      <div class="service-icon">✳</div><span class="service-number">01</span>
+      <h3>Business Websites</h3>
+      <p>Professional websites that showcase your services, business information and contact details.</p>
+      <a href="#contact" data-service="Business Website">Let's build yours ↗</a>
+    </article>
+    <article class="service">
+      <div class="service-icon">▣</div><span class="service-number">02</span>
+      <h3>Online Stores</h3>
+      <p>Beautiful product displays that help customers explore your products and enquire about purchases.</p>
+      <a href="#contact" data-service="Online Store">Let's build yours ↗</a>
+    </article>
+    <article class="service">
+      <div class="service-icon">◈</div><span class="service-number">03</span>
+      <h3>Landing Pages</h3>
+      <p>Focused pages for promotions, campaigns, events and specific business offers.</p>
+      <a href="#contact" data-service="Landing Page">Let's build yours ↗</a>
+    </article>
+    <article class="service">
+      <div class="service-icon">✧</div><span class="service-number">04</span>
+      <h3>Website Redesign</h3>
+      <p>Give an outdated website a fresh look with a modern layout and improved visitor experience.</p>
+      <a href="#contact" data-service="Website Redesign">Let's build yours ↗</a>
+    </article>
+  </div>
+</section>
+
+<section class="content container" id="portfolio">
+  <div class="section-head">
+    <div class="eyebrow">OUR CREATIVE WORK</div>
+    <h2>Made with ideas. <span class="gradient">Built with purpose.</span></h2>
+    <p>Explore selected website concepts and projects. This collection will grow as we work with more businesses.</p>
+  </div>
+
+  <div class="portfolio-grid">
+    <article class="project">
+      <div class="project-visual">
+        <div class="preview">
+          <div class="preview-bar">WASH & CHILL AUTO SPA</div>
+          <div class="preview-main">
+            <h3>A FRESH<br>DRIVE STARTS HERE.</h3>
+            <small>CAR CARE • DETAILING • WASH</small>
+          </div>
+        </div>
+        <span class="project-tag">AUTOMOTIVE</span>
+      </div>
+      <div class="project-info">
+        <div><h3>Wash & Chill Auto Spa</h3><p>Website concept preview</p></div>
+        <a class="project-link" href="#contact">↗</a>
+      </div>
+    </article>
+
+    <article class="project">
+      <div class="project-visual">
+        <div class="preview">
+          <div class="preview-bar">JNJ AUTODETAILING</div>
+          <div class="preview-main blue">
+            <h3>DETAILING<br>DONE RIGHT.</h3>
+            <small>CARE • QUALITY • SHINE</small>
+          </div>
+        </div>
+        <span class="project-tag">CAR DETAILING</span>
+      </div>
+      <div class="project-info">
+        <div><h3>JnJ AutoDetailing</h3><p>Website demo</p></div>
+        <a class="project-link" href="#contact">↗</a>
+      </div>
+    </article>
+
+    <article class="project">
+      <div class="project-visual">
+        <div style="text-align:center">
+          <div style="font-size:55px;color:#8d50e9">✳</div>
+          <h3 style="font:700 24px 'Space Grotesk'">YOUR BRAND<br>COULD BE HERE.</h3>
+          <small style="font-size:9px;letter-spacing:1px">LET'S CREATE SOMETHING.</small>
+        </div>
+        <span class="project-tag">NEXT PROJECT</span>
+      </div>
+      <div class="project-info">
+        <div><h3>Your business</h3><p>Let's create your website</p></div>
+        <a class="project-link" href="#contact">↗</a>
+      </div>
+    </article>
+  </div>
+  <p class="portfolio-note">These are concept/demo previews, not claims of completed client work. Replace them with genuine project screenshots and links as your portfolio grows.</p>
+</section>
+
+<section class="content container">
+  <div class="section-head">
+    <div class="eyebrow">OUR PROCESS</div>
+    <h2>From first idea to <span class="gradient">launch day.</span></h2>
+  </div>
+  <div class="process">
+    <article class="step"><span>01</span><h3>Tell us</h3><p>Share your business and what you want your website to achieve.</p></article>
+    <article class="step"><span>02</span><h3>Plan it</h3><p>Agree on the design, features, timeline and price.</p></article>
+    <article class="step"><span>03</span><h3>Build it</h3><p>We develop your website and share a preview for feedback.</p></article>
+    <article class="step"><span>04</span><h3>Launch it</h3><p>After approval and agreed payment, your website goes live.</p></article>
+  </div>
+</section>
+
+<section class="content container" id="pricing">
+  <div class="section-head">
+    <div class="eyebrow">OUR STARTING PRICE</div>
+    <h2>Professional online presence. <span class="gradient">Clear pricing.</span></h2>
+    <p>We agree on the project scope and terms before starting work.</p>
+  </div>
+  <div class="pricing-card">
+    <div class="pricing-label">STARTER BUSINESS WEBSITE</div>
+    <div class="price">KSh 5,000 <small>setup</small></div>
+    <div class="monthly">+ KSh 1,500 per month</div>
+    <div class="price-divider"></div>
+    <ul>
+      <li>✓ Professional website design</li>
+      <li>✓ Mobile-friendly layout</li>
+      <li>✓ Business information and services</li>
+      <li>✓ WhatsApp contact integration</li>
+      <li>✓ Hosting and maintenance within agreed limits</li>
+      <li>✓ Support under agreed terms</li>
+    </ul>
+    <a href="#contact" class="btn primary">Get started ↗</a>
+    <p class="fine-print">Domain costs and renewals, included pages, hosting limits and maintenance scope must be confirmed in your project agreement. Advanced projects receive a custom quote.</p>
+  </div>
+</section>
+
+<section class="content container" id="reviews">
+  <div class="section-head">
+    <div class="eyebrow">CUSTOMER EXPERIENCES</div>
+    <h2>Good work deserves <span class="gradient">good feedback.</span></h2>
+    <p>This section is ready for real reviews from your customers.</p>
+  </div>
+  <div class="reviews">
+    <article class="review">
+      <div class="stars">★★★★★</div>
+      <p>Replace this text with a genuine review from a customer who has worked with ACID.</p>
+      <div class="review-person"><div class="avatar">01</div><div><strong>Customer review 01</strong><small>Replace with real details</small></div></div>
+    </article>
+    <article class="review">
+      <div class="stars">★★★★★</div>
+      <p>Add authentic feedback about the customer's experience, communication or finished website.</p>
+      <div class="review-person"><div class="avatar">02</div><div><strong>Customer review 02</strong><small>Replace with real details</small></div></div>
+    </article>
+    <article class="review">
+      <div class="stars">★★★★★</div>
+      <p>Show what a real customer appreciated about the project and the service they received.</p>
+      <div class="review-person"><div class="avatar">03</div><div><strong>Customer review 03</strong><small>Replace with real details</small></div></div>
+    </article>
+  </div>
+  <p class="portfolio-note">These are placeholders, not real testimonials. Publish only genuine reviews with permission.</p>
+</section>
+
+<section class="content container contact" id="contact">
+  <div class="contact-copy">
+    <div class="eyebrow">LET'S CREATE SOMETHING</div>
+    <h2>Your next big idea starts <span class="gradient">right here.</span></h2>
+    <p>Tell us about your business and the website you have in mind. We'll discuss the best way to bring your idea to life.</p>
+  </div>
+
+  <div class="contact-card">
+    <h3>Start a project ↗</h3>
+    <form id="contactForm">
+      <label>Your name<input id="name" placeholder="Full name" required></label>
+      <label>Business name<input id="business" placeholder="Your business" required></label>
+      <label>Phone number<input id="phone" type="tel" placeholder="07XX XXX XXX" required></label>
+      <label>Service needed
+        <select id="service" required>
+          <option value="">Choose a service</option>
+          <option>Business Website</option>
+          <option>Online Store</option>
+          <option>Landing Page</option>
+          <option>Website Redesign</option>
+          <option>Other / Not sure</option>
+        </select>
+      </label>
+      <label>Project details<textarea id="details" rows="4" placeholder="Tell us about your business and website idea"></textarea></label>
+      <button class="btn primary" type="submit">Send enquiry on WhatsApp ↗</button>
+      <small class="form-note">WhatsApp will open with your message ready for you to review and send.</small>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <a class="logo" href="#home" style="justify-content:center">
+    <span class="logo-symbol">A</span>
+    <span>ACID<em>.</em><small>WEBSITE SOLUTIONS</small></span>
+  </a>
+  <p>Creative websites for businesses ready to stand out.</p>
+  <div class="footer-bottom">
+    <span>© <span id="year"></span> ACID Website Solutions</span>
+    <a href="#home">Back to top ↑</a>
+  </div>
+</footer>
+
+<script>
+// REPLACE WITH YOUR REAL WHATSAPP NUMBER.
+// Example format: 254712345678 (no + sign or spaces).
+const WHATSAPP_NUMBER = "2547XXXXXXXX";
+
+// Mobile navigation
+const menuButton = document.getElementById("menu");
+const navigation = document.getElementById("nav");
+
+menuButton.addEventListener("click", () => {
+  navigation.classList.toggle("open");
+  menuButton.textContent = navigation.classList.contains("open") ? "✕" : "☰";
+});
+
+navigation.querySelectorAll("a").forEach(link => {
+  link.addEventListener("click", () => {
+    navigation.classList.remove("open");
+    menuButton.textContent = "☰";
+  });
+});
+
+// Service selection shortcuts
+document.querySelectorAll("[data-service]").forEach(link => {
+  link.addEventListener("click", () => {
+    document.getElementById("service").value = link.dataset.service;
+  });
+});
+
+// Contact form
+document.getElementById("contactForm").addEventListener("submit", event => {
+  event.preventDefault();
+
+  if (WHATSAPP_NUMBER === "254799041951") {
+    alert("Add your real WhatsApp number in the script before using the form.");
+    return;
+  }
+
+  const name = document.getElementById("name").value.trim();
+  const business = document.getElementById("business").value.trim();
+  const phone = document.getElementById("phone").value.trim();
+  const service = document.getElementById("service").value;
+  const details = document.getElementById("details").value.trim();
+
+  const message = `Hello ACID Website Solutions!
+
+I would like to enquire about a website.
+
+Name: ${name}
+Business: ${business}
+Phone: ${phone}
+Service: ${service}
+
+Project details:
+${details || "I would like to discuss my website idea."}`;
+
+  const url = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(message);
+  window.open(url, "_blank", "noopener,noreferrer");
+});
+
+// Footer year
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
