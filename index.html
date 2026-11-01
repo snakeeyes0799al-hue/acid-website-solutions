@@ -4,8 +4,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ACID — Creative Digital Studio</title>
-<meta name="description" content="ACID Website Solutions builds bold, modern websites for ambitious businesses.">
+<meta name="theme-color" content="#f8f6ff">
+<title>ACID Website Solutions | Professional Websites in Kenya</title>
+<meta name="description" content="ACID Website Solutions creates professional, modern and responsive websites for businesses in Kenya.">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -74,7 +76,7 @@ header {
   padding:13px 22px;
   background:#ffffffdc;
   backdrop-filter:blur(20px);
-  border:1px solid #ffffff;
+  border:1px solid #fff;
   border-radius:20px;
   box-shadow:0 10px 40px #4d3d7410;
   display:flex;
@@ -104,7 +106,6 @@ header {
   color:var(--muted);
   margin-top:4px;
 }
-.logo span:last-child { display:block; }
 .logo em { color:var(--purple); font-style:normal; }
 
 nav { display:flex; align-items:center; gap:28px; }
@@ -123,6 +124,7 @@ nav a:hover { color:var(--purple); }
   padding:9px 12px;
   border-radius:10px;
   font-size:20px;
+  cursor:pointer;
 }
 
 .hero {
@@ -463,6 +465,12 @@ section.content { padding:110px 0; }
 }
 .contact-copy h2 { font:700 clamp(38px,5vw,58px)/1.05 "Space Grotesk"; letter-spacing:-2px; margin:20px 0; }
 .contact-copy p { color:var(--muted); line-height:1.9; font-size:14px; }
+.contact-number {
+  display:inline-block;
+  margin-top:20px;
+  font-weight:800;
+  color:#8051d8;
+}
 .contact-card { background:white; border-radius:22px; padding:30px; box-shadow:0 20px 55px #49376b18; }
 .contact-card h3 { font:700 22px "Space Grotesk"; margin-bottom:22px; }
 form label { display:block; font-size:10px; font-weight:800; margin-bottom:15px; }
@@ -478,14 +486,39 @@ form input,form select,form textarea {
   outline:none;
   font-size:11px;
 }
-form input:focus,form select:focus,form textarea:focus { border-color:var(--purple); box-shadow:0 0 0 3px #9257ff19; }
+form input:focus,form select:focus,form textarea:focus {
+  border-color:var(--purple);
+  box-shadow:0 0 0 3px #9257ff19;
+}
 form textarea { resize:vertical; }
 form button { width:100%; }
-.form-note { display:block; text-align:center; color:var(--muted); font-size:9px; margin-top:12px; line-height:1.6; }
+.form-note {
+  display:block;
+  text-align:center;
+  color:var(--muted);
+  font-size:9px;
+  margin-top:12px;
+  line-height:1.6;
+}
 
-footer { padding:40px 5% 20px; text-align:center; background:#ffffffa8; border-top:1px solid #ffffff; }
+footer {
+  padding:40px 5% 20px;
+  text-align:center;
+  background:#ffffffa8;
+  border-top:1px solid white;
+}
 footer p { color:var(--muted); font-size:11px; margin:15px 0 25px; }
-.footer-bottom { border-top:1px solid #eae4f2; padding-top:18px; display:flex; justify-content:space-between; gap:10px; font-size:10px; color:var(--muted); }
+.footer-contact { margin-bottom:20px; font-size:12px; font-weight:800; }
+.footer-contact a { color:#8051d8; }
+.footer-bottom {
+  border-top:1px solid #eae4f2;
+  padding-top:18px;
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  font-size:10px;
+  color:var(--muted);
+}
 .footer-bottom a { color:var(--purple); font-weight:800; }
 
 @media(max-width:900px) {
@@ -539,7 +572,9 @@ footer p { color:var(--muted); font-size:11px; margin:15px 0 25px; }
     <span class="logo-symbol">A</span>
     <span>ACID<em>.</em><small>WEBSITE SOLUTIONS</small></span>
   </a>
-  <button class="menu" id="menu">☰</button>
+
+  <button class="menu" id="menu" aria-label="Toggle navigation">☰</button>
+
   <nav id="nav">
     <a href="#home">Home</a>
     <a href="#services">Services</a>
@@ -555,10 +590,12 @@ footer p { color:var(--muted); font-size:11px; margin:15px 0 25px; }
     <div class="eyebrow"><span class="dot"></span> CREATIVE DIGITAL STUDIO</div>
     <h1>We build websites that <span class="gradient">make you stand out.</span></h1>
     <p>We help ambitious businesses turn their ideas into beautiful, professional online experiences. Your next customer could be one click away.</p>
+
     <div class="buttons">
       <a href="#contact" class="btn primary">Start a project ↗</a>
       <a href="#portfolio" class="btn secondary">Explore our work</a>
     </div>
+
     <div class="hero-caption">✦ Creative thinking. Modern design. Real business focus.</div>
   </div>
 
@@ -592,6 +629,7 @@ footer p { color:var(--muted); font-size:11px; margin:15px 0 25px; }
     <h2>Digital solutions for <span class="gradient">ambitious brands.</span></h2>
     <p>We create online experiences that help businesses look professional, communicate clearly and connect with customers.</p>
   </div>
+
   <div class="services">
     <article class="service">
       <div class="service-icon">✳</div><span class="service-number">01</span>
@@ -599,18 +637,21 @@ footer p { color:var(--muted); font-size:11px; margin:15px 0 25px; }
       <p>Professional websites that showcase your services, business information and contact details.</p>
       <a href="#contact" data-service="Business Website">Let's build yours ↗</a>
     </article>
+
     <article class="service">
       <div class="service-icon">▣</div><span class="service-number">02</span>
       <h3>Online Stores</h3>
       <p>Beautiful product displays that help customers explore your products and enquire about purchases.</p>
       <a href="#contact" data-service="Online Store">Let's build yours ↗</a>
     </article>
+
     <article class="service">
       <div class="service-icon">◈</div><span class="service-number">03</span>
       <h3>Landing Pages</h3>
       <p>Focused pages for promotions, campaigns, events and specific business offers.</p>
       <a href="#contact" data-service="Landing Page">Let's build yours ↗</a>
     </article>
+
     <article class="service">
       <div class="service-icon">✧</div><span class="service-number">04</span>
       <h3>Website Redesign</h3>
@@ -641,7 +682,7 @@ footer p { color:var(--muted); font-size:11px; margin:15px 0 25px; }
       </div>
       <div class="project-info">
         <div><h3>Wash & Chill Auto Spa</h3><p>Website concept preview</p></div>
-        <a class="project-link" href="#contact">↗</a>
+        <a class="project-link" href="#contact" aria-label="Enquire about a project">↗</a>
       </div>
     </article>
 
@@ -658,7 +699,7 @@ footer p { color:var(--muted); font-size:11px; margin:15px 0 25px; }
       </div>
       <div class="project-info">
         <div><h3>JnJ AutoDetailing</h3><p>Website demo</p></div>
-        <a class="project-link" href="#contact">↗</a>
+        <a class="project-link" href="#contact" aria-label="Enquire about a project">↗</a>
       </div>
     </article>
 
@@ -673,10 +714,11 @@ footer p { color:var(--muted); font-size:11px; margin:15px 0 25px; }
       </div>
       <div class="project-info">
         <div><h3>Your business</h3><p>Let's create your website</p></div>
-        <a class="project-link" href="#contact">↗</a>
+        <a class="project-link" href="#contact" aria-label="Enquire about a project">↗</a>
       </div>
     </article>
   </div>
+
   <p class="portfolio-note">These are concept/demo previews, not claims of completed client work. Replace them with genuine project screenshots and links as your portfolio grows.</p>
 </section>
 
@@ -685,6 +727,7 @@ footer p { color:var(--muted); font-size:11px; margin:15px 0 25px; }
     <div class="eyebrow">OUR PROCESS</div>
     <h2>From first idea to <span class="gradient">launch day.</span></h2>
   </div>
+
   <div class="process">
     <article class="step"><span>01</span><h3>Tell us</h3><p>Share your business and what you want your website to achieve.</p></article>
     <article class="step"><span>02</span><h3>Plan it</h3><p>Agree on the design, features, timeline and price.</p></article>
@@ -699,11 +742,13 @@ footer p { color:var(--muted); font-size:11px; margin:15px 0 25px; }
     <h2>Professional online presence. <span class="gradient">Clear pricing.</span></h2>
     <p>We agree on the project scope and terms before starting work.</p>
   </div>
+
   <div class="pricing-card">
     <div class="pricing-label">STARTER BUSINESS WEBSITE</div>
     <div class="price">KSh 5,000 <small>setup</small></div>
     <div class="monthly">+ KSh 1,500 per month</div>
     <div class="price-divider"></div>
+
     <ul>
       <li>✓ Professional website design</li>
       <li>✓ Mobile-friendly layout</li>
@@ -712,6 +757,7 @@ footer p { color:var(--muted); font-size:11px; margin:15px 0 25px; }
       <li>✓ Hosting and maintenance within agreed limits</li>
       <li>✓ Support under agreed terms</li>
     </ul>
+
     <a href="#contact" class="btn primary">Get started ↗</a>
     <p class="fine-print">Domain costs and renewals, included pages, hosting limits and maintenance scope must be confirmed in your project agreement. Advanced projects receive a custom quote.</p>
   </div>
@@ -723,23 +769,27 @@ footer p { color:var(--muted); font-size:11px; margin:15px 0 25px; }
     <h2>Good work deserves <span class="gradient">good feedback.</span></h2>
     <p>This section is ready for real reviews from your customers.</p>
   </div>
+
   <div class="reviews">
     <article class="review">
       <div class="stars">★★★★★</div>
       <p>Replace this text with a genuine review from a customer who has worked with ACID.</p>
       <div class="review-person"><div class="avatar">01</div><div><strong>Customer review 01</strong><small>Replace with real details</small></div></div>
     </article>
+
     <article class="review">
       <div class="stars">★★★★★</div>
       <p>Add authentic feedback about the customer's experience, communication or finished website.</p>
       <div class="review-person"><div class="avatar">02</div><div><strong>Customer review 02</strong><small>Replace with real details</small></div></div>
     </article>
+
     <article class="review">
       <div class="stars">★★★★★</div>
       <p>Show what a real customer appreciated about the project and the service they received.</p>
       <div class="review-person"><div class="avatar">03</div><div><strong>Customer review 03</strong><small>Replace with real details</small></div></div>
     </article>
   </div>
+
   <p class="portfolio-note">These are placeholders, not real testimonials. Publish only genuine reviews with permission.</p>
 </section>
 
@@ -748,14 +798,27 @@ footer p { color:var(--muted); font-size:11px; margin:15px 0 25px; }
     <div class="eyebrow">LET'S CREATE SOMETHING</div>
     <h2>Your next big idea starts <span class="gradient">right here.</span></h2>
     <p>Tell us about your business and the website you have in mind. We'll discuss the best way to bring your idea to life.</p>
+    <a class="contact-number" href="https://wa.me/254733836730" target="_blank" rel="noopener">
+      WhatsApp: 0733836730 ↗
+    </a>
   </div>
 
   <div class="contact-card">
     <h3>Start a project ↗</h3>
+
     <form id="contactForm">
-      <label>Your name<input id="name" placeholder="Full name" required></label>
-      <label>Business name<input id="business" placeholder="Your business" required></label>
-      <label>Phone number<input id="phone" type="tel" placeholder="07XX XXX XXX" required></label>
+      <label>Your name
+        <input id="name" type="text" placeholder="Full name" required>
+      </label>
+
+      <label>Business name
+        <input id="business" type="text" placeholder="Your business" required>
+      </label>
+
+      <label>Phone number
+        <input id="phone" type="tel" placeholder="07XX XXX XXX" required>
+      </label>
+
       <label>Service needed
         <select id="service" required>
           <option value="">Choose a service</option>
@@ -766,7 +829,11 @@ footer p { color:var(--muted); font-size:11px; margin:15px 0 25px; }
           <option>Other / Not sure</option>
         </select>
       </label>
-      <label>Project details<textarea id="details" rows="4" placeholder="Tell us about your business and website idea"></textarea></label>
+
+      <label>Project details
+        <textarea id="details" rows="4" placeholder="Tell us about your business and website idea"></textarea>
+      </label>
+
       <button class="btn primary" type="submit">Send enquiry on WhatsApp ↗</button>
       <small class="form-note">WhatsApp will open with your message ready for you to review and send.</small>
     </form>
@@ -779,7 +846,14 @@ footer p { color:var(--muted); font-size:11px; margin:15px 0 25px; }
     <span class="logo-symbol">A</span>
     <span>ACID<em>.</em><small>WEBSITE SOLUTIONS</small></span>
   </a>
+
   <p>Creative websites for businesses ready to stand out.</p>
+
+  <div class="footer-contact">
+    WhatsApp:
+    <a href="https://wa.me/254733836730" target="_blank" rel="noopener">0733836730</a>
+  </div>
+
   <div class="footer-bottom">
     <span>© <span id="year"></span> ACID Website Solutions</span>
     <a href="#home">Back to top ↑</a>
@@ -787,9 +861,9 @@ footer p { color:var(--muted); font-size:11px; margin:15px 0 25px; }
 </footer>
 
 <script>
-// REPLACE WITH YOUR REAL WHATSAPP NUMBER.
-// Example format: 254712345678 (no + sign or spaces).
-const WHATSAPP_NUMBER = "2547XXXXXXXX";
+// ACID WEBSITE SOLUTIONS OFFICIAL WHATSAPP NUMBER
+// Kenya international format: 254733836730
+const WHATSAPP_NUMBER = "254733836730";
 
 // Mobile navigation
 const menuButton = document.getElementById("menu");
@@ -797,7 +871,8 @@ const navigation = document.getElementById("nav");
 
 menuButton.addEventListener("click", () => {
   navigation.classList.toggle("open");
-  menuButton.textContent = navigation.classList.contains("open") ? "✕" : "☰";
+  menuButton.textContent =
+    navigation.classList.contains("open") ? "✕" : "☰";
 });
 
 navigation.querySelectorAll("a").forEach(link => {
@@ -814,20 +889,20 @@ document.querySelectorAll("[data-service]").forEach(link => {
   });
 });
 
-// Contact form
+// WhatsApp contact form
 document.getElementById("contactForm").addEventListener("submit", event => {
   event.preventDefault();
-
-  if (WHATSAPP_NUMBER === "254799041951") {
-    alert("Add your real WhatsApp number in the script before using the form.");
-    return;
-  }
 
   const name = document.getElementById("name").value.trim();
   const business = document.getElementById("business").value.trim();
   const phone = document.getElementById("phone").value.trim();
   const service = document.getElementById("service").value;
   const details = document.getElementById("details").value.trim();
+
+  if (!name || !business || !phone || !service) {
+    alert("Please complete all required fields.");
+    return;
+  }
 
   const message = `Hello ACID Website Solutions!
 
@@ -839,14 +914,20 @@ Phone: ${phone}
 Service: ${service}
 
 Project details:
-${details || "I would like to discuss my website idea."}`;
+${details || "I would like to discuss my website idea."}
 
-  const url = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(message);
-  window.open(url, "_blank", "noopener,noreferrer");
+Please get back to me. Thank you!`;
+
+  const whatsappURL =
+    "https://wa.me/" + WHATSAPP_NUMBER +
+    "?text=" + encodeURIComponent(message);
+
+  window.open(whatsappURL, "_blank", "noopener,noreferrer");
 });
 
 // Footer year
-document.getElementById("year").textContent = new Date().getFullYear();
+document.getElementById("year").textContent =
+  new Date().getFullYear();
 </script>
 </body>
 </html>
